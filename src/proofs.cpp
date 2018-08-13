@@ -20,7 +20,7 @@
 #include <math.h>
 #include <stdint.h> 
 
-unsigned int nStakeMinAge = 3 * 60 * 60; // 3 Hours
+unsigned int nStakeMinAge = 1 * 60 * 60; // 3 Hours
 unsigned int nModifierInterval = 2 * 60; // time to elapse before new modifier is computed
 
 uint256 CBlock::GetHash() const {
