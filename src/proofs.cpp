@@ -39,7 +39,7 @@ int64_t GetCoinbaseValue(int nHeight, CAmount nFees)
         nSubsidy = 10000 * COIN;
     } else if (nHeight >= 6 && nHeight <= 10) {
         nSubsidy = 100000 * COIN;
-    } else if (nHeight >= 11 && nHeight <= LASTPOWBLOCK ) {
+    } else if (nHeight >= 11 && nHeight <= LASTPOWWITHREWARD ) {
         nSubsidy = 5000 * COIN;
     } else {
         nSubsidy = 0 * COIN;
