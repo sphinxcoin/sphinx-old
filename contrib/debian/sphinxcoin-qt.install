@@ -1,0 +1,6 @@
+usr/local/bin/sphinxcoin-qt usr/bin
+share/pixmaps/sphinxcoin32.xpm usr/share/pixmaps
+share/pixmaps/sphinxcoin16.xpm usr/share/pixmaps
+share/pixmaps/sphinxcoin128.png usr/share/pixmaps
+debian/sphinxcoin-qt.desktop usr/share/applications
+debian/sphinxcoin-qt.protocol usr/share/kde4/services/

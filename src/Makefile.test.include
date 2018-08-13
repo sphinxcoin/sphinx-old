@@ -1,0 +1,76 @@
+# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+TESTS += test/test_sphinxcoin
+bin_PROGRAMS += test/test_sphinxcoin
+TEST_SRCDIR = test
+TEST_BINARY=test/test_sphinxcoin$(EXEEXT)
+
+JSON_TEST_FILES = 
+
+RAW_TEST_FILES =
+
+GENERATED_TEST_FILES = $(JSON_TEST_FILES:.json=.json.h) $(RAW_TEST_FILES:.raw=.raw.h)
+
+# test_sphinxcoin binary #
+SPHINXCOIN_TESTS =\
+  test/base32_tests.cpp \
+  test/key_tests.cpp \
+  test/serialize_tests.cpp \
+  test/test_sphinxcoin.cpp \
+  test/test_sphinxcoin.h \
+  test/test_sphinxcoin_main.cpp \
+  test/testutil.cpp \
+  test/testutil.h 
+
+test_test_sphinxcoin_SOURCES = $(SPHINXCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_sphinxcoin_CPPFLAGS = $(AM_CPPFLAGS) $(SPHINXCOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_sphinxcoin_LDADD = $(LIBSPHINXCOIN_SERVER) $(LIBSPHINXCOIN_CLI) $(LIBSPHINXCOIN_COMMON) $(LIBSPHINXCOIN_UTIL) $(LIBSPHINXCOIN_CONSENSUS) $(LIBSPHINXCOIN_CRYPTO) $(LIBUNIVALUE) \
+  $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
+test_test_sphinxcoin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+if ENABLE_WALLET
+test_test_sphinxcoin_LDADD += $(LIBSPHINXCOIN_WALLET)
+endif
+
+test_test_sphinxcoin_LDADD += $(LIBSPHINXCOIN_CONSENSUS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+test_test_sphinxcoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+
+if ENABLE_ZMQ
+test_test_sphinxcoin_LDADD += $(ZMQ_LIBS)
+endif
+#
+
+nodist_test_test_sphinxcoin_SOURCES = $(GENERATED_TEST_FILES)
+
+$(SPHINXCOIN_TESTS): $(GENERATED_TEST_FILES)
+
+CLEAN_SPHINXCOIN_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
+
+CLEANFILES += $(CLEAN_SPHINXCOIN_TEST)
+
+sphinxcoin_test: $(TEST_BINARY)
+
+sphinxcoin_test_check: $(TEST_BINARY) FORCE
+	$(MAKE) check-TESTS TESTS=$^
+
+sphinxcoin_test_clean : FORCE
+	rm -f $(CLEAN_SPHINXCOIN_TEST) $(test_test_sphinxcoin_OBJECTS) $(TEST_BINARY)
+
+check-local:
+	@echo "Running test/util/sphinxcoin-util-test.py..."
+	$(top_builddir)/test/util/sphinxcoin-util-test.py
+	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C secp256k1 check
+if EMBEDDED_UNIVALUE
+	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C univalue check
+endif
+
+%.json.h: %.json
+	@$(MKDIR_P) $(@D)
+	@{ \
+	 echo "namespace json_tests{" && \
+	 echo "static unsigned const char $(*F)[] = {" && \
+	 $(HEXDUMP) -v -e '8/1 "0x%02x, "' -e '"\n"' $< | $(SED) -e 's/0x  ,//g' && \
+	 echo "};};"; \
+	} > "$@.new" && mv -f "$@.new" "$@"
+	@echo "Generated $@"

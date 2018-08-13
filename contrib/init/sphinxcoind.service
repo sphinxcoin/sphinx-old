@@ -1,0 +1,25 @@
+# It is not recommended to modify this file in-place, because it will
+# be overwritten during package upgrades. If you want to add further
+# options or overwrite existing ones then use
+# $ systemctl edit sphinxcoind.service
+# See "man systemd.service" for details.
+
+# Note that almost all daemon options could be specified in
+# /etc/sphinxcoin/sphinxcoin.conf
+
+[Unit]
+Description=Sphinxcoin daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/sphinxcoind -daemon -conf=/etc/sphinxcoin/sphinxcoin.conf -pid=/run/sphinxcoind/sphinxcoind.pid
+# Creates /run/sphinxcoind owned by sphinxcoin
+RuntimeDirectory=sphinxcoind
+User=sphinxcoin
+Type=forking
+PIDFile=/run/sphinxcoind/sphinxcoind.pid
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

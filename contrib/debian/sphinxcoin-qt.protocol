@@ -1,0 +1,11 @@
+[Protocol]
+exec=sphinxcoin-qt '%u'
+protocol=sphinxcoin
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

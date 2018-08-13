@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Sphinxcoin Core
+Comment=Connect to the Sphinxcoin P2P Network
+Comment[de]=Verbinde mit dem Sphinxcoin peer-to-peer Netzwerk
+Comment[fr]=Sphinxcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Sphinxcoin, eşten eşe kriptografik sanal para birimi
+Exec=sphinxcoin-qt %u
+Terminal=false
+Type=Application
+Icon=sphinxcoin128
+MimeType=x-scheme-handler/sphinxcoin;
+Categories=Office;Finance;
+StartupWMClass=Sphinxcoin-qt

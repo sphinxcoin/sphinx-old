@@ -1,0 +1,8 @@
+/usr/bin/sphinxcoin-cli		--	gen_context(system_u:object_r:sphinxcoin_exec_t,s0)
+/usr/sbin/sphinxcoind		--	gen_context(system_u:object_r:sphinxcoin_exec_t,s0)
+/usr/lib(64)?/sphinxcoin/sphinxcoind		--	gen_context(system_u:object_r:sphinxcoin_exec_t,s0)
+
+/etc/sphinxcoin(/.*)?		gen_context(system_u:object_r:sphinxcoin_conf_t,s0)
+/var/lib/sphinxcoin(/.*)?		gen_context(system_u:object_r:sphinxcoin_var_lib_t,s0)
+
+(/var)?/run/sphinxcoind(/.*)?   gen_context(system_u:object_r:sphinxcoin_var_run_t,s0)

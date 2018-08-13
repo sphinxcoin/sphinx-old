@@ -1,0 +1,81 @@
+policy_module(sphinxcoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type sphinxcoin_t;
+type sphinxcoin_exec_t;
+init_daemon_domain(sphinxcoin_t, sphinxcoin_exec_t)
+
+permissive sphinxcoin_t;
+
+type sphinxcoin_initrc_exec_t;
+init_script_file(sphinxcoin_initrc_exec_t)
+
+type sphinxcoin_conf_t;
+files_type(sphinxcoin_conf_t)
+
+type sphinxcoin_var_lib_t;
+files_type(sphinxcoin_var_lib_t)
+
+type sphinxcoin_var_run_t;
+files_type(sphinxcoin_var_run_t)
+
+type sphinxcoin_port_t;
+corenet_port(sphinxcoin_port_t)
+
+########################################
+#
+# sphinxcoin local policy
+#
+allow sphinxcoin_t self:process { fork };
+
+allow sphinxcoin_t self:fifo_file rw_fifo_file_perms;
+allow sphinxcoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(sphinxcoin_t, sphinxcoin_conf_t, sphinxcoin_conf_t)
+manage_files_pattern(sphinxcoin_t, sphinxcoin_conf_t, sphinxcoin_conf_t)
+
+manage_dirs_pattern(sphinxcoin_t, sphinxcoin_var_lib_t, sphinxcoin_var_lib_t)
+manage_files_pattern(sphinxcoin_t, sphinxcoin_var_lib_t, sphinxcoin_var_lib_t)
+files_var_lib_filetrans(sphinxcoin_t, sphinxcoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(sphinxcoin_t, sphinxcoin_var_run_t, sphinxcoin_var_run_t)
+manage_files_pattern(sphinxcoin_t, sphinxcoin_var_run_t, sphinxcoin_var_run_t)
+
+sysnet_dns_name_resolve(sphinxcoin_t)
+corenet_all_recvfrom_unlabeled(sphinxcoin_t)
+
+allow sphinxcoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(sphinxcoin_t)
+corenet_tcp_sendrecv_generic_node(sphinxcoin_t)
+corenet_tcp_sendrecv_all_ports(sphinxcoin_t)
+corenet_tcp_bind_generic_node(sphinxcoin_t)
+
+gen_require(`
+    type sphinxcoin_port_t;
+')
+allow sphinxcoin_t sphinxcoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type sphinxcoin_port_t;
+')
+allow sphinxcoin_t sphinxcoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(sphinxcoin_t)
+
+files_read_etc_files(sphinxcoin_t)
+
+miscfiles_read_localization(sphinxcoin_t)
+
+sysnet_dns_name_resolve(sphinxcoin_t)
+
+allow sphinxcoin_t sphinxcoin_exec_t:file execute_no_trans;
+allow sphinxcoin_t self:process setsched;
+corecmd_exec_ls(sphinxcoin_t)
+corenet_tcp_connect_http_port(sphinxcoin_t)
+dev_read_urand(sphinxcoin_t)
+fs_getattr_xattr_fs(sphinxcoin_t)
+kernel_read_system_state(sphinxcoin_t)

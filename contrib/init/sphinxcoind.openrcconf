@@ -1,0 +1,33 @@
+# /etc/conf.d/sphinxcoind: config file for /etc/init.d/sphinxcoind
+
+# Config file location
+#SPHINXCOIND_CONFIGFILE="/etc/sphinxcoin/sphinxcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $SPHINXCOIND_USER)
+#SPHINXCOIND_PIDDIR="/var/run/sphinxcoind"
+
+# What filename to give the pidfile
+#SPHINXCOIND_PIDFILE="${SPHINXCOIND_PIDDIR}/sphinxcoind.pid"
+
+# Where to write sphinxcoind data (be mindful that the blockchain is large)
+#SPHINXCOIND_DATADIR="/var/lib/sphinxcoind"
+
+# User and group to own sphinxcoind process
+#SPHINXCOIND_USER="sphinxcoin"
+#SPHINXCOIND_GROUP="sphinxcoin"
+
+# Path to sphinxcoind executable
+#SPHINXCOIND_BIN="/usr/bin/sphinxcoind"
+
+# Nice value to run sphinxcoind under
+#SPHINXCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#SPHINXCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for sphinxcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+SPHINXCOIND_SIGTERM_TIMEOUT=60
