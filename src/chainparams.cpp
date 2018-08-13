@@ -83,7 +83,7 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
 
-	for(uint32_t ii=0;ii<500000;ii++) {
+	for(uint32_t ii=2000000;ii<6000000;ii++) {
                 genesis.nNonce = ii;
                 hashGenesisBlock = genesis.GetHash();
                 printf("nNonce = %9u, hash = %s, MerkleRoot = %s\n",ii,hashGenesisBlock.GetHex().c_str(),genesis.hashMerkleRoot.GetHex().c_str());
