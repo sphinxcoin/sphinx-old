@@ -82,6 +82,13 @@ public:
         genesis.nNonce = GENESIS_nNONCE;
 
         hashGenesisBlock = genesis.GetHash();
+        for(uint32_t ii=0;ii<2000000;ii++) {
+                genesis.nNonce = ii;
+                hashGenesisBlock = genesis.GetHash();
+                printf("nNonce = %9u, hash = %s, MerkleRoot = %s\n",ii,hashGenesisBlock.GetHex().c_str(),genesis.hashMerkleRoot.GetHex().c_str());
+                if(ii%10000 == 0)
+                        printf("%9u\n",ii);
+        }
 
         assert(hashGenesisBlock == uint256(GENESIS_HASH));
         assert(genesis.hashMerkleRoot == uint256(GENESIS_MERKLE));
