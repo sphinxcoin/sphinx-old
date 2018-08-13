@@ -34,18 +34,15 @@ uint256 CBlock::GetPoWHash() const {
 // miner's coin base reward
 int64_t GetCoinbaseValue(int nHeight, CAmount nFees)
 {
-    CAmount nSubsidy; 
-    if (nHeight == 1)
-    {
-        nSubsidy = PREMINE_VALUE * COIN;
-    } else if (nHeight == 2)
-    {
-	nSubsidy = MASTERNODE_VALUE * COIN;
-    } else if (nHeight <= LASTPOWBLOCK)
-    {
-        nSubsidy = STAKECOMBINE_VALUE * COIN;
+    CAmount nSubsidy;
+    if (nHeight >= 1 && nHeight <= 5) {
+        nSubsidy = 10000 * COIN;
+    } else if (nHeight >= 6 && nHeight <= 10) {
+        nSubsidy = 100000 * COIN;
+    } else if (nHeight >= 11 && nHeight <= LASTPOWBLOCK ) {
+        nSubsidy = 5000 * COIN;
     } else {
-	nSubsidy = 0;
+        nSubsidy = 0 * COIN;
     }
     return nSubsidy + nFees;
 }
@@ -53,7 +50,7 @@ int64_t GetCoinbaseValue(int nHeight, CAmount nFees)
 // miner's coin stake reward based on coin age spent (coin-days)
 int64_t GetCoinstakeValue(int64_t nCoinAge, CAmount nFees, int nHeight)
 {
-	CAmount nSubsidy = 10 * COIN; // Constant reward of 10 SPHX
+        CAmount nSubsidy = 10 * COIN; // Constant reward of 10 CAT
     return nSubsidy + nFees;
 }
 

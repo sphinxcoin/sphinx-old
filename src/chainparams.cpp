@@ -101,8 +101,10 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        vSeeds.push_back(CDNSSeedData("23.91.97.27", "23.91.97.27"));
-	vSeeds.push_back(CDNSSeedData("106.75.99.86","106.75.99.86"));
+        vSeeds.push_back(CDNSSeedData("s1", "s1.sphinx-coin.com"));
+	vSeeds.push_back(CDNSSeedData("s2", "s2.sphinx-coin.com"));
+	vSeeds.push_back(CDNSSeedData("s3", "s3.sphinx-coin.com"));
+	vSeeds.push_back(CDNSSeedData("m1", "m1.sphinx-coin.com"));
         
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
