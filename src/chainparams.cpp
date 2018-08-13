@@ -83,7 +83,6 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
 
-
         assert(hashGenesisBlock == uint256(GENESIS_HASH));
         assert(genesis.hashMerkleRoot == uint256(GENESIS_MERKLE));
 
