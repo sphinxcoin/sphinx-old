@@ -11,7 +11,7 @@
 #define PSZ_TIMESTAMP		"On 2018/8/13 We make the world better by SPHINX."
 #define GENESIS_HASH		"0x000001e0123c968b3bad475a4a3f54d023bd9bde9b98f11c5b675591158cd126"
 #define GENESIS_MERKLE		"0x633bd45263f0b1a32f70aea1b74b351e64bbc6f09d44db33a66cdb3c7a68889f"
-#define PUBKEY_PRE		0x40
+#define PUBKEY_PRE		0x39
 #define SCRIPT_PRE		85
 #define SECRET_PRE		153
 #define STEALTH_PRE		40
