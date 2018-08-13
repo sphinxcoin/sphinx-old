@@ -8,10 +8,10 @@
 
 #define GENESIS_nTIME		1523700125
 #define GENESIS_nNONCE		283281
-#define PSZ_TIMESTAMP		"June 13th, 2016: ISIS claims responsibility for the shooting massacre at Orlando FL gay night club yesterday morning leaving 49 dead & many wounded."
+#define PSZ_TIMESTAMP		"On 2018/8/13 We make the world better by SPHINX."
 #define GENESIS_HASH		"0x0000163cc3109523fd954c007ca966bddebae8dd54d45edd64fc23190f9785d1"
 #define GENESIS_MERKLE		"0x36190d84d0b7b91faac92956b9b3477fb675da7f3848336910c60e427eac0493"
-#define PUBKEY_PRE		0x4d
+#define PUBKEY_PRE		0x44
 #define SCRIPT_PRE		85
 #define SECRET_PRE		153
 #define STEALTH_PRE		40

@@ -82,7 +82,7 @@ public:
         genesis.nNonce = GENESIS_nNONCE;
 
         hashGenesisBlock = genesis.GetHash();
-/*
+
 	for(uint32_t ii=0;ii<500000;ii++) {
                 genesis.nNonce = ii;
                 hashGenesisBlock = genesis.GetHash();
@@ -90,7 +90,7 @@ public:
                 if(ii%10000 == 0)
                         printf("%9u\n",ii);
         }
-*/
+
         assert(hashGenesisBlock == uint256(GENESIS_HASH));
         assert(genesis.hashMerkleRoot == uint256(GENESIS_MERKLE));
 
