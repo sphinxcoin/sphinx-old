@@ -1,7 +1,7 @@
 ﻿SphinxcoinQt is an open source community driven project.
-Join the community on Telegram https://t.me/sphinxcoinLtd
+Join the community on Telegram https://t.me/@sphinxcoins
 
-## SphinxcoinQt
+## Sphinxcoin
 
 First and foremost, we have the pleasure to announce that due to intense work and outstanding support from the community, Sphinxcoin coin has been saved, and from now on, things will only get better.
 We would like to officially thank the past developers for their significant work with Sphinxcoin. 
@@ -10,7 +10,7 @@ They managed to place us in a right strategic direction, leaving a legacy of hig
 
 As we highly believe in the voice of the community we created the “Governance Platform” the place where people can vote for future projects. The platform will enable us to address the community future projects and simultaneously raise funds. 
 
-As we also know that you like good news, we’re pleased to announce that the platform is live and operational and can be found at: www.sphinxcoinltd.net
+As we also know that you like good news, we’re pleased to announce that the platform is live and operational and can be found at: www.sphinx-coin.com
 
 
 ### GOVERNANCE PLATFORM 
@@ -39,7 +39,6 @@ The winning project will receive a detailed Whitepaper, max 2 weeks after voting
 Detailed aspects about projects + newsletter can be found in the Bluepaper below
 
 
-##### Bluepaper: http://www.sphinxcoinltd.net/bluepaper.pdf
 
 
 
