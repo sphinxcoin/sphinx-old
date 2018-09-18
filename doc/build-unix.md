@@ -1,5 +1,10 @@
 UNIX BUILD NOTES
 ====================
+for short:
+./autogen.sh
+./configure --with-incompatible-bdb --enable-cxx --disable-shared
+make
+
 Some notes on how to build Sphinxcoin Core in Unix.
 
 (For BSD specific instructions, see [build-openbsd.md](build-openbsd.md) and/or

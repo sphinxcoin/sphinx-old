@@ -96,7 +96,6 @@ public:
         vSeeds.push_back(CDNSSeedData("s1", "s1.sphinx-coin.com"));
 	vSeeds.push_back(CDNSSeedData("s2", "s2.sphinx-coin.com"));
 	vSeeds.push_back(CDNSSeedData("s3", "s3.sphinx-coin.com"));
-	vSeeds.push_back(CDNSSeedData("m1", "m1.sphinx-coin.com"));
         
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
