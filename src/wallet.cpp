@@ -3381,7 +3381,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     CTxDB txdb("r");
     BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
     {
-        static int nMaxStakeSearchInterval = 60;
         bool fKernelFound = false;
         {
             boost::this_thread::interruption_point();
